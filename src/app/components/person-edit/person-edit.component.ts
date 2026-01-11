@@ -62,11 +62,9 @@ export class PersonEditComponent implements OnInit {
             // JSONPlaceholder generate ID automatically on POST usually, but we are mocking somewhat
             // Actually jsonplaceholder returns the object with id 101 always for post
             // Implementation detail: for this test, we just navigate back
-            console.log('Adding person:', personData);
-            this.router.navigate(['/people']);
-
-            // Real API call:
-            // this.peopleService.create(personData).subscribe(...)
+            this.peopleService.create(personData).subscribe(() => {
+                this.router.navigate(['/people']);
+            });
         }
     }
 }
